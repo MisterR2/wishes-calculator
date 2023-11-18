@@ -113,7 +113,8 @@
             localStorage.setItem('gemas', gemas);
             localStorage.setItem('passes', passes);
 
-            if (tiros < meta) {
+            if (meta != 0) {
+                if (tiros < meta) {
                 document.getElementById("metaLess").innerHTML = meta;
                 document.getElementById("tirosLess").innerHTML = tiros;
                 document.getElementById("faltaLess").innerHTML = faltam;
@@ -125,6 +126,8 @@
                 document.getElementById("resultLess").classList.add("d-none")
                 document.getElementById("resultEnough").classList.remove("d-none")
             }
+            }
+            
         }
 
 </script>
