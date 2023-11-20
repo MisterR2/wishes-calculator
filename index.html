@@ -51,6 +51,10 @@
             <span class="input-group-text" id="basic-addon1">Passes especiais</span>
             <input type="number" id="passes" class="form-control" placeholder="Quantos passes especiais (já convertidos) você possui atualmente?" aria-label="Passes" aria-describedby="basic-addon1">
         </div>
+        <div class="input-group mb-3" data-bs>
+            <span class="input-group-text" id="basic-addon1">Pity</span>
+            <input type="number" id="pity" class="form-control" placeholder="Qual seu pity hoje?" aria-label="pity" aria-describedby="basic-addon1">
+        </div>
     </div>
     <div class="container d-flex text-center d-none" id="resultLess">
         <p class="fs-4 mx-auto">Sua meta é juntar <span class="fw-bold" id="metaLess"></span> tiros e hoje você possui <span class="fw-bold" id="tirosLess"></span>, portanto, faltam <span class="fw-bold" id="faltaLess"></span> tiros, força!</p>
@@ -96,7 +100,7 @@
         document.getElementById('meta').value = localStorage.getItem('meta') || '';
         document.getElementById('gemas').value = localStorage.getItem('gemas') || '';
         document.getElementById('passes').value = localStorage.getItem('passes') || '';
-
+        document.getElementById('pity').value = localStorage.getItem('pity') || '';
         self.calcular_tiros()
     });
 
@@ -104,8 +108,9 @@
             let meta = Number(document.getElementById('meta').value);
             let gemas = Number(document.getElementById('gemas').value);
             let passes = Number(document.getElementById('passes').value);
+            let pity = Number(document.getElementById('pity').value);
 
-            let tiros = Math.floor(gemas/160) + passes;
+            let tiros = Math.floor(gemas/160) + passes + pity;
             let faltam = meta - tiros;
 
             
@@ -113,6 +118,7 @@
             localStorage.setItem('meta', meta);
             localStorage.setItem('gemas', gemas);
             localStorage.setItem('passes', passes);
+            localStorage.setItem('pity', pity);
 
             if (meta != 0) {
                 if (tiros < meta) {
